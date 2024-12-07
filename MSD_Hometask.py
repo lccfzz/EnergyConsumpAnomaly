@@ -46,7 +46,22 @@ plt.title(f"Product 3: Demand and Forecast vs Month")
 plt.legend()
 plt.grid(True)
 plt.show()
+# %%
+def plot_demand_over_time(df,market_id, product_name):
+    market_filter = df[df['MARKET_ID'] == market_id]
+    plt.figure(figsize=(8, 5))
+    plt.plot(market_filter["MONTH"], market_filter["FORECAST"], label="Forecast", linestyle="--", marker="o")
+    plt.plot(market_filter["MONTH"], market_filter["DEMAND"], label="Demand", marker="o")
 
+    plt.xlabel("Month")
+    plt.ylabel("Values")
+    plt.title(f"Product {product_name}: Demand and Forecast vs Month")
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+for id in range(4):
+    plot_demand_over_time(df,id,product_name=id)
 # %%
 
 
